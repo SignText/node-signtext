@@ -1,0 +1,8 @@
+log/
+src/
+.editorconfig
+.eslintrc
+.gitignore
+gulpfile.js
+tsconfig.json
+tslint.json
