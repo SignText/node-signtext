@@ -19,5 +19,5 @@ StringLiteral -> %string
 
 Literal -> (BooleanLiteral | NumberLiteral | StringLiteral)
     {% function (data) {
-      return data[0];
+      return data[0][0];
     } %}
