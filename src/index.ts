@@ -1,9 +1,9 @@
 import * as fs from "fs";
 import * as yargs from "yargs";
-import chalk from "chalk";
 
 import { Runtime } from "./context/runtime";
 import { Primitive } from "./context/object/primitive";
+import * as stdlib from "./stdlib";
 
 const argv = yargs
     .string("eval")
@@ -25,11 +25,7 @@ export function evaluateFile(path: string)
 
 export function evaluate(code: string)
 : (Promise<Primitive>) {
-  return runtime.eval(code, {
-    concat(...x) {
-      return x.join("");
-    }
-  });
+  return runtime.eval(code, stdlib);
 }
 
 if (argv.eval || argv._.length === 1) {
