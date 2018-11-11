@@ -1,6 +1,6 @@
 {
   "name": "signtext",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "String manipulation language",
   "main": "build/index.js",
   "scripts": {
