@@ -1,12 +1,11 @@
-[Github-Repository-Url]: https://github.com/mgthomas99/signtext
-[NPM-Package-Url]: https://www.npmjs.com/package/signtext
+[GitHub-Repository-URL]: https://github.com/mgthomas99/signtext
+[NPM-Package-URL]: https://www.npmjs.com/package/signtext
 
-[NPM-Package-Version-Shield-Url]: https://img.shields.io/npm/v/signtext.svg?style=flat-square
-[License-Shield-Url]: https://img.shields.io/github/license/mgthomas99/signtext.svg?style=flat-square
+[NPM-Package-Version-Shield-URL]: https://img.shields.io/npm/v/signtext.svg?style=flat-square
+[License-Shield-URL]: https://img.shields.io/github/license/mgthomas99/signtext.svg?style=flat-square
 
-[![NPM][NPM-Package-Version-Shield-Url]][NPM-Package-Url]
-[![GitHub][License-Shield-Url]][Github-Link]
-
+[![NPM][NPM-Package-Version-Shield-URL]][NPM-Package-URL]
+[![GitHub][License-Shield-URL]][GitHub-Repository-URL]
 
 # signtext
 
