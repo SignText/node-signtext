@@ -10,7 +10,8 @@ FunctionCall -> %lbracket %identifier %rbracket ParameterList
 
 ParameterList -> %lparen Parameter (%comma Parameter):* %rparen
     {% function (data) {
-      return [data[1], ...data[2].map(x => x[1])];
+      const ext_params = data[2].map(x => x[1]);
+      return [data[1], ...ext_params];
     } %}
 
 Parameter -> (FunctionCall | Literal)
