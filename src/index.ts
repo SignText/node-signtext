@@ -1,21 +1,31 @@
 import * as fs from "fs";
-import * as nearley from "nearley";
+import * as yargs from "yargs";
 
-const grammar = nearley.Grammar.fromCompiled(require("./grammar/grammar"));
-const parser = new nearley.Parser(grammar);
+import { Runtime } from "./context/runtime";
+
+const argv = yargs
+    .string("eval")
+      .alias("e", "eval")
+      .describe("eval", "A string to evaluate")
+    .parse(process.argv);
+
+const runtime = new Runtime();
 
 export function evaluateFile(path: string)
-: (string) {
+: (Promise<string>) {
   const content = fs.readFileSync(path, { encoding: "utf-8" });
   return evaluate(content);
 }
 
 export function evaluate(code: string)
-: (string) {
-  parser.feed(code);
-  const results = parser.finish();
-  const result = results[0];
-  return JSON.stringify(result, null, 4);
+: (Promise<string>) {
+  return runtime.eval(code);
 }
 
-console.log(evaluate(`"Hello, world!"`));
+if (argv.eval) {
+  evaluate(argv.eval)
+      .then(console.log)
+      .catch(console.error);
+} else {
+  yargs.showHelp();
+}
