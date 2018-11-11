@@ -1,2 +1,2 @@
 
-export type Primitive = (Function | boolean | number | string);
+export type Primitive = (boolean | number | string);
