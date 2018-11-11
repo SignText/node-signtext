@@ -14,7 +14,8 @@ NumberLiteral -> %number
 
 StringLiteral -> %string
     {% function (data) {
-      return data[0].value;
+      const raw = data[0].value;
+      return raw.substring(1, raw.length - 1);
     } %}
 
 Literal -> (BooleanLiteral | NumberLiteral | StringLiteral)
