@@ -12,6 +12,9 @@
     "lint": "gulp \"lint\"",
     "start": "node \"build/index.js\""
   },
+  "bin": {
+    "signtext": "build/bin/signtext.js"
+  },
   "keywords": [
     "language",
     "string"
