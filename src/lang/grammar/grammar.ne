@@ -15,6 +15,7 @@
     lparen: "(",
     rparen: ")",
     comma: ",",
+    period: ".",
     ws: {
       match: /\s+/,
       lineBreaks: true
@@ -36,6 +37,12 @@ Expression ->
     _ (FunctionCall | Literal | VariableCall) _
     {% function (data) {
       return data[1][0];
+    } %}
+
+Identifier -> %identifier (%period %identifier):*
+    {% function (data) {
+      const derefs = (data[1] || []).map(x => x[1].value);
+      return [data[0].value, ...derefs].join(".");
     } %}
 
 _ -> __:*
