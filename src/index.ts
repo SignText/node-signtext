@@ -1,4 +1,7 @@
-export * from "./lang/token/function-call";
+export * from "./lang/token/function-call-token";
+export * from "./lang/token/token-type";
+export * from "./lang/token/variable-call-token";
+export * from "./lang/context";
 export * from "./lang/namespace";
 export * from "./lang/primitive";
 
