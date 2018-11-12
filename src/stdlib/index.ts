@@ -1,5 +1,5 @@
 
 export function concat(...args: any[])
 : (string) {
-  return args.join("");
+  return args.map(String).join("");
 }
