@@ -1,8 +1,8 @@
 import * as fs from "fs";
 import * as yargs from "yargs";
 
-import { Runtime } from "./context/runtime";
-import { Primitive } from "./context/object/primitive";
+import { Primitive } from "./lang/primitive";
+import { Runtime } from "./runtime";
 import * as stdlib from "./stdlib";
 
 const argv = yargs

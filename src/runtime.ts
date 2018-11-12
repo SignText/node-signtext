@@ -1,11 +1,11 @@
 import { Mutex } from "async-mutex";
 import * as nearley from "nearley";
 
-import { FunctionCall } from "./lexer/function-call";
-import { Namespace } from "./object/namespace";
-import { Primitive } from "./object/primitive";
+import { FunctionCall } from "./lang/token/function-call";
+import { Namespace } from "./lang/namespace";
+import { Primitive } from "./lang/primitive";
 
-const grammar = nearley.Grammar.fromCompiled(require("./../grammar/grammar"));
+const grammar = nearley.Grammar.fromCompiled(require("./lang/grammar/grammar"));
 
 export class Runtime {
 
@@ -17,6 +17,17 @@ export class Runtime {
     this.mutex = new Mutex();
   }
 
+  /**
+   * Evaluates the argument `string` or `FunctionCall` using this `Runtime`'s
+   * context and the given `Namespace`, returning the result.
+   *
+   * @param     {FunctionCall | string} x
+   *            The `FunctionCall` token or `string` code to evaluate.
+   * @param     {Namespace} ns
+   *            The `Namespace` to use.
+   * @return    {Promise<Primitive>}
+   *            A `Promise` which eventually resolves to the final evaluation.
+   */
   public async eval(x: FunctionCall | string, ns?: Namespace)
   : (Promise<Primitive>) {
     if (typeof ns === "undefined") return this.eval(x, {});

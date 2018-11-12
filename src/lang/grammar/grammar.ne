@@ -20,8 +20,8 @@
 %}
 
 @lexer lexer
-@include "./src/grammar/function.ne"
-@include "./src/grammar/literal.ne"
+@include "./src/lang/grammar/function.ne"
+@include "./src/lang/grammar/literal.ne"
 
 Chunk -> (FunctionCall | Literal)
     {% function (data) {
