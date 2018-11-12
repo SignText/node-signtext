@@ -1,5 +1,7 @@
 import { Primitive } from "./primitive";
 
+export type NamespaceKey = (Namespace | Function | Primitive);
+
 export interface Namespace {
-  [index: string]: Namespace | Function | Primitive;
+  [index: string]: NamespaceKey;
 }
