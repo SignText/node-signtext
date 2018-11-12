@@ -19,9 +19,12 @@ export class Context {
 
   public async call(ns: Namespace, item: string, ...params: any[])
   : (Promise<Primitive>) {
+    const params2 = await Promise.all(
+      params.map(x => this.eval(x, ns))
+    );
     const ex = this.get(ns, item);
     if (typeof ex === "function") {
-      return ex(...params);
+      return ex(...params2);
     } else {
       throw new Error("Expected function, received " + (typeof ex));
     }
