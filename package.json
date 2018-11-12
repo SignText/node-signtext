@@ -1,8 +1,20 @@
 {
   "name": "signtext",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "String manipulation language",
+  "license": "MIT",
+  "author": {
+    "name": "George Thomas",
+    "url": "https://mgthomas99.github.io"
+  },
+  "keywords": [
+    "language",
+    "string"
+  ],
   "main": "build/index.js",
+  "bin": {
+    "signtext": "build/bin/signtext.js"
+  },
   "scripts": {
     "build": "gulp \"build\"",
     "clean": "gulp \"clean\"",
@@ -12,18 +24,17 @@
     "lint": "gulp \"lint\"",
     "start": "node \"build/index.js\""
   },
-  "keywords": [
-    "language",
-    "string"
-  ],
-  "author": "George Thomas",
-  "license": "MIT",
   "devDependencies": {
+    "@types/chalk": "^2.2.0",
+    "@types/moo": "^0.4.2",
+    "@types/nearley": "^2.11.0",
     "@types/node": "^10.10.1",
+    "@types/yargs": "^12.0.1",
     "del": "^3.0.0",
     "eslint": "^5.6.0",
     "gulp": "^3.9.1",
     "gulp-eslint": "^5.0.0",
+    "gulp-nearley": "^1.0.0",
     "gulp-tslint": "^8.1.3",
     "gulp-typescript": "^5.0.0-alpha.3",
     "gulp-uglify": "^3.0.1",
@@ -31,5 +42,12 @@
     "typescript": "^3.0.3",
     "utf-8-validate": "^5.0.1",
     "vinyl-buffer": "^1.0.1"
+  },
+  "dependencies": {
+    "async-mutex": "^0.1.3",
+    "chalk": "^2.4.1",
+    "moo": "^0.4.3",
+    "nearley": "2.11.1",
+    "yargs": "^12.0.2"
   }
 }

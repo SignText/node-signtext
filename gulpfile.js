@@ -1,16 +1,25 @@
 const del = require("del");
 const eslint = require("gulp-eslint");
 const gulp = require("gulp");
+const nearley = require("gulp-nearley");
 const tslint = require("gulp-tslint");
 const typescript = require("gulp-typescript");
 
 const ts_project = typescript.createProject("tsconfig.json");
 
-gulp.task("build", function () {
+gulp.task("build:grammar", function () {
+  return gulp.src("src/**/*.ne")
+      .pipe(nearley())
+      .pipe(gulp.dest("build/"));
+});
+
+gulp.task("build:script", function () {
   return gulp.src("src/**/*.ts")
       .pipe(ts_project())
       .pipe(gulp.dest("build/"));
-});
+})
+
+gulp.task("build", ["build:grammar", "build:script"]);
 
 gulp.task("clean", function () {
   return del([

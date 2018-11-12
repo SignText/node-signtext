@@ -1,3 +1,4 @@
+# EditorConfig is awesome: https://EditorConfig.org
 
 charset = utf-8
 root = true
@@ -8,4 +9,12 @@ end_of_line = lf
 indent_size = 2
 indent_style = space
 insert_final_newline = true
+trim_trailing_whitespace = true
+
+[**/*.{signtext,signtxt,stxt}]
+insert_final_newline = false
+trim_trailing_whitespace = true
+
+[**/*.nvmrc]
+insert_final_newline = false
 trim_trailing_whitespace = true
