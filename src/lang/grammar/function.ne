@@ -1,12 +1,12 @@
 @lexer lexer
 
-FunctionCall -> VariableCall ParameterList
+FunctionCall -> VariableCall _ ParameterList
     {% function (data) {
       return ({
         type: "FunctionCall",
         ctx: {
           identifier: data[0].ctx.identifier,
-          parameters: data[1]
+          parameters: data[2]
         }
       });
     } %}

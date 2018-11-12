@@ -14,7 +14,11 @@
     rbracket: "]",
     lparen: "(",
     rparen: ")",
-    comma: ","
+    comma: ",",
+    ws: {
+      match: /\s+/,
+      lineBreaks: true
+    }
   });
 %}
 
@@ -29,7 +33,12 @@ Chunk -> Expression
     } %}
 
 Expression ->
-    (FunctionCall | Literal | VariableCall)
+    _ (FunctionCall | Literal | VariableCall) _
     {% function (data) {
-      return data[0][0];
+      return data[1][0];
     } %}
+
+_ -> __:*
+    {% function (data) { return null } %}
+__ -> %ws:+
+    {% function (data) { return null } %}
