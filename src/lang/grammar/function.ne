@@ -3,7 +3,7 @@
 FunctionCall -> VariableCall _ ParameterList
     {% function (data) {
       return ({
-        type: "FunctionCall",
+        type: "Call",
         ctx: {
           identifier: data[0].ctx.identifier,
           parameters: data[2]

@@ -1,11 +1,11 @@
 @lexer lexer
 
-VariableCall -> %lbracket %identifier %rbracket
+VariableCall -> %lbracket Identifier %rbracket
     {% function (data) {
       return ({
-        type: "VariableCall",
+        type: "Get",
         ctx: {
-          identifier: data[1].value
+          identifier: data[1]
         }
       });
     } %}
