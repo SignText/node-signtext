@@ -3,8 +3,11 @@
 FunctionCall -> %lbracket %identifier %rbracket ParameterList
     {% function (data) {
       return ({
-        identifier: data[1].value,
-        parameters: data[3]
+        type: "FunctionCall",
+        ctx: {
+          identifier: data[1].value,
+          parameters: data[3]
+        }
       });
     } %}
 
