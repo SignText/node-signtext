@@ -37,7 +37,7 @@ export class Runtime {
     this.parser.feed(x);
     this.parser.finish();
 
-    const result = this.parser.results[0][0];
+    const result = this.parser.results[0];
     release();
     const res = await this.ctx.eval(result, ns);
     return String(res);
