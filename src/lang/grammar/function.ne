@@ -17,7 +17,7 @@ ParameterList -> %lparen Parameter (%comma Parameter):* %rparen
       return [data[1], ...ext_params];
     } %}
 
-Parameter -> (FunctionCall | Literal)
+Parameter -> (Expression)
     {% function (data) {
       return data[0][0];
     } %}
