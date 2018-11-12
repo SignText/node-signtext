@@ -29,13 +29,15 @@ export class Runtime {
    * @return    {Promise<Primitive>}
    *            A `Promise` which eventually resolves to the final evaluation.
    */
-  public async eval(x: string, ns?: Namespace)
+  public async eval(
+    x: string,
+    ns: Namespace = {})
   : (Promise<string>) {
-    if (typeof ns === "undefined") return this.eval(x, {});
-
     const release = await this.mutex.acquire();
+    const state = this.parser.save();
     this.parser.feed(x);
     this.parser.finish();
+    this.parser.restore(state);
 
     const result = this.parser.results[0];
     release();
