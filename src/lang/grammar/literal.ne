@@ -2,7 +2,7 @@
 
 BooleanLiteral -> (%true | %false)
     {% function (data) {
-      const value = data[0].value;
+      const value = data[0][0].value;
       return Boolean(value);
     } %}
 
