@@ -23,7 +23,13 @@
 @include "./src/lang/grammar/literal.ne"
 @include "./src/lang/grammar/namespace.ne"
 
-Chunk -> (FunctionCall | Literal)
+Chunk -> Expression
     {% function (data) {
       return data[0];
+    } %}
+
+Expression ->
+    (FunctionCall | Literal | VariableCall)
+    {% function (data) {
+      return data[0][0];
     } %}
