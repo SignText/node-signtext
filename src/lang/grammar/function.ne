@@ -1,12 +1,12 @@
 @lexer lexer
 
-FunctionCall -> %lbracket %identifier %rbracket ParameterList
+FunctionCall -> VariableCall ParameterList
     {% function (data) {
       return ({
         type: "FunctionCall",
         ctx: {
-          identifier: data[1].value,
-          parameters: data[3]
+          identifier: data[0].ctx.identifier,
+          parameters: data[1]
         }
       });
     } %}
