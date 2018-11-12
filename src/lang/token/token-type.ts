@@ -1,4 +1,4 @@
-import { FunctionCallToken } from "./function-call-token";
-import { VariableCallToken } from "./variable-call-token";
+import { CallToken } from "./call-token";
+import { GetToken } from "./get-token";
 
-export type TokenType = (FunctionCallToken | VariableCallToken);
+export type TokenType = (CallToken | GetToken);
