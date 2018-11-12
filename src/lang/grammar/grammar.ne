@@ -5,11 +5,10 @@
   const lexer = moo.compile({
     number: /[0-9]+/,
     string: /"(?:\\["bfnrt\/\\]|\\u[a-fA-F0-9]{4}|[^"\\])*"/,
+    false: /false/,
+    true: /true/,
 
     identifier: /[a-zA-Z]+[a-zA-Z0-9_]*/,
-
-    false: "false",
-    true: "true",
 
     lbracket: "[",
     rbracket: "]",
