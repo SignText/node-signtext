@@ -1,6 +1,6 @@
 {
   "name": "signtext",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "String manipulation language",
   "license": "MIT",
   "author": {
@@ -11,7 +11,6 @@
     "language",
     "string"
   ],
-
   "main": "build/index.js",
   "bin": {
     "signtext": "build/bin/signtext.js"
