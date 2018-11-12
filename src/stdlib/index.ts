@@ -1,5 +1,8 @@
+import chalk from "chalk";
+
+export const Chalk = chalk;
 
 export function concat(...args: any[])
 : (string) {
-  return args.map(String).join("");
+  return args.join("");
 }
