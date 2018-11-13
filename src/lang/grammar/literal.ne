@@ -9,7 +9,7 @@ BooleanLiteral -> (%true | %false)
 NumberLiteral -> %number
     {% function (data) {
       const value = data[0].value;
-      return Number(value);
+      return Number.parseFloat(value);
     } %}
 
 StringLiteral -> %string
