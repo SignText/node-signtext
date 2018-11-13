@@ -16,8 +16,14 @@ NumberLiteral -> %number
 
 StringLiteral -> %string
     {% function (data) {
-      const raw = data[0].value;
-      return raw.substring(1, raw.length - 1);
+      function escape(str) {
+        return str
+            .replace(/\\"/g, "\"");
+      }
+
+      let raw = data[0].value;
+      raw = raw.substring(1, raw.length - 1);
+      return escape(raw);
     } %}
 
 Literal -> (BooleanLiteral | NumberLiteral | StringLiteral)
