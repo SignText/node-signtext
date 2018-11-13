@@ -3,7 +3,7 @@
   const moo = require("moo");
 
   const lexer = moo.compile({
-    number: /[0-9]+/,
+    number: /-?(?:[0-9]|[1-9][0-9]+)(?:\.[0-9]+)?(?:[eE][-+]?[0-9]+)?\b/,
     string: /"(?:\\["bfnrt\/\\]|\\u[a-fA-F0-9]{4}|[^"\\])*"/,
     false: /false/,
     true: /true/,
