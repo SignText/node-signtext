@@ -2,8 +2,10 @@
 
 BooleanLiteral -> (%true | %false)
     {% function (data) {
+      // `value` will either be `"true"` or `"false"`. `Boolean(value)` will not
+      // work as, in Javascript, `Boolean("false")` returns `true`.
       const value = data[0][0].value;
-      return Boolean(value);
+      return value === "true";
     } %}
 
 NumberLiteral -> %number
