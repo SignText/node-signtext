@@ -1,24 +1,36 @@
+import { String } from "./index";
 
-export function concat(...items: any[])
+export function lshift(str: string, amount = 1)
 : (string) {
-  return items.join("");
+  const r = str.length - amount;
+  return rshift(str, r);
 }
 
-export function repeat(str: string, quantity: number)
-: (string) {
-  return String.prototype.repeat.apply(str, [quantity]);
-}
-
-export function replace(str: string, a: string, b: any)
+export function replace(str: string, a: string, b: any = "")
 : (string) {
   const pattern = new RegExp(a, "g");
-  return String.prototype.replace.call(str, pattern, b);
+  return str.replace(pattern, b);
 }
 
 export function reverse(str: string)
 : (string) {
   const chars = split(str);
-  return concat(...chars.reverse());
+  return String.concat("", ...chars.reverse());
+}
+
+// TODO: This function can almost certainly be optimised... ?
+export function rshift(str: string, amount = 1)
+: (string) {
+  if (amount < 0) throw new Error("`amount` must be >= 0");
+
+  let chars = split(str);
+  while (amount > 0) {
+    chars = [" ", ...chars];
+    chars[0] = chars[chars.length - 1];
+    chars.length -= 1;
+    amount -= 1;
+  }
+  return String.concat("", ...chars);
 }
 
 export function split(
