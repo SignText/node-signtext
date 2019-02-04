@@ -12,9 +12,6 @@
     "string"
   ],
   "main": "build/index.js",
-  "bin": {
-    "signtext": "build/bin/signtext.js"
-  },
   "scripts": {
     "build": "gulp \"build\"",
     "clean": "gulp \"clean\"",
