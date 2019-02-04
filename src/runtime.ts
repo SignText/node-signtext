@@ -47,25 +47,21 @@ export class Runtime {
   : (Promise<NamespaceValue | string>) {
     if (typeof x === "object") {
       if (x.type === "Call") {
-        return await this._call(ctx, x.ctx.identifier, ...x.ctx.parameters);
+        const target = ctx.get(x.ctx.identifier);
+        const args = await Promise.all(
+            x.ctx.parameters.map((param) => this._eval(param, ctx))
+          );
+
+        if (typeof target === "function") {
+          target.apply(null, args);
+        } else {
+          throw new Error("Expected function, received " + (typeof target));
+        }
       } else if (x.type === "Get") {
         return ctx.get(x.ctx.identifier);
       }
     } else {
       return x;
-    }
-  }
-
-  private async _call(ctx: Context, identifier: string, ...params: any[])
-  : (Promise<Primitive>) {
-    const params2 = await Promise.all(
-      params.map(x => this.eval(x, ctx))
-    );
-    const ex = ctx.get(identifier);
-    if (typeof ex === "function") {
-      return ex(...params2);
-    } else {
-      throw new Error("Expected function, received " + (typeof ex));
     }
   }
 
