@@ -1,50 +1,54 @@
-import { TokenType } from "./token/token-type";
-import { NamespaceKey, Namespace } from "./namespace";
-import { Primitive } from "./primitive";
+import { NamespaceValue, Namespace } from "./namespace";
 
 export class Context {
 
-  public async eval(x: Primitive | TokenType, ns: Namespace)
-  : (Promise<NamespaceKey | string>) {
-    if (typeof x === "object") {
-      if (x.type === "Call") {
-        return await this.call(ns, x.ctx.identifier, ...x.ctx.parameters);
-      } else if (x.type === "Get") {
-        return this.get(ns, x.ctx.identifier);
-      }
-    } else {
-      return x;
-    }
+  public ns : Namespace;
+
+  public constructor(ns?: Namespace) {
+    this.ns = ns || { };
   }
 
-  public async call(ns: Namespace, item: string, ...params: any[])
-  : (Promise<Primitive>) {
-    const params2 = await Promise.all(
-      params.map(x => this.eval(x, ns))
-    );
-    const ex = this.get(ns, item);
-    if (typeof ex === "function") {
-      return ex(...params2);
-    } else {
-      throw new Error("Expected function, received " + (typeof ex));
+  /**
+   * Imports all properties from the `Context`/`Namespace` provided.
+   *
+   * @param   {Context | Namespace} ns
+   *          The `Context` or `Namespace` whose properties should be copied.
+   * @returns {this}
+   */
+  public import(ns: Context | Namespace)
+  : (this) {
+    if (ns instanceof Context) {
+      return this.import(ns.ns);
     }
+    for (const key of Object.keys(ns)) {
+      this.set(key, ns[key]);
+    }
+    return this;
   }
 
-  public get(ns: Namespace, item: string)
-  : (NamespaceKey) {
-    const parts = item.split(/\./g);
+  /**
+   * Set the value of property `identifier`.
+   *
+   * @param     {string}          identifier
+   *            The identifier of the property.
+   * @param     {NamespaceValue}  value
+   *            The value to assign to the property.
+   * @returns   {void}
+   */
+  public set(identifier: string, value: NamespaceValue)
+  : (void) {
+    this.ns[identifier] = value;
+  }
 
-    if (parts.length === 1) {
-      return ns[parts[0]];
-    } else {
-      let res: any = ns;
-
-      while (parts.length > 0) {
-        const part = parts.splice(0, 1)[0];
-        res = this.get(res, part);
-      }
-      return res;
-    }
+  /**
+   * @param     {string}            identifier
+   *            The identifier of the property.
+   * @returns   {(NamespaceValue)}
+   *            The property's value.
+   */
+  public get(identifier: string)
+  : (NamespaceValue) {
+    return this.ns[identifier];
   }
 
 }

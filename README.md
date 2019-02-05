@@ -4,20 +4,28 @@
 [NPM-Package-Version-Shield-URL]: https://img.shields.io/npm/v/signtext.svg?style=flat-square
 [License-Shield-URL]: https://img.shields.io/github/license/mgthomas99/signtext.svg?style=flat-square
 
+# signtext
+
 [![NPM][NPM-Package-Version-Shield-URL]][NPM-Package-URL]
 [![GitHub][License-Shield-URL]][GitHub-Repository-URL]
 
-# signtext
-
-Powerful & simple markup language for string manipulation.
+SignText is a powerful & simple markup language for data manipulation, that
+integrates with its implementation language.
 
 ## Build & Test
 
 ```sh
 npm install
-npm run build
+gulp build
+```
+
+This will build the source code into `build/`.
+
+```sh
 npm test
 ```
+
+This will execute tests and output the results to the standard output stream.
 
 ## License
 

@@ -1,6 +1,7 @@
 @lexer lexer
 
-VariableCall -> %lbracket Identifier %rbracket
+VariableCall ->
+  %lbracket Identifier %rbracket
     {% function (data) {
       return ({
         type: "Get",
