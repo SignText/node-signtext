@@ -1,3 +1,7 @@
+/**
+ * Test literal parsing.
+ */
+
 const chai = require("chai");
 
 const signtext = require("./../../../");

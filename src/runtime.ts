@@ -8,6 +8,9 @@ import { TokenType } from "./lang/token/token-type";
 const grammar = nearley.Grammar.fromCompiled(
     require("./lang/grammar/grammar"));
 
+/**
+ * Defines a parser and interpreter instance.
+ */
 export class Runtime {
 
   private readonly parser: nearley.Parser;

@@ -8,6 +8,13 @@ export class Context {
     this.ns = ns || { };
   }
 
+  /**
+   * Imports all properties from the `Context`/`Namespace` provided.
+   *
+   * @param   {Context | Namespace} ns
+   *          The `Context` or `Namespace` whose properties should be copied.
+   * @returns {this}
+   */
   public import(ns: Context | Namespace)
   : (this) {
     if (ns instanceof Context) {
@@ -19,11 +26,26 @@ export class Context {
     return this;
   }
 
+  /**
+   * Set the value of property `identifier`.
+   *
+   * @param     {string}          identifier
+   *            The identifier of the property.
+   * @param     {NamespaceValue}  value
+   *            The value to assign to the property.
+   * @returns   {void}
+   */
   public set(identifier: string, value: NamespaceValue)
   : (void) {
     this.ns[identifier] = value;
   }
 
+  /**
+   * @param     {string}            identifier
+   *            The identifier of the property.
+   * @returns   {(NamespaceValue)}
+   *            The property's value.
+   */
   public get(identifier: string)
   : (NamespaceValue) {
     return this.ns[identifier];
