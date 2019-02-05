@@ -16,7 +16,7 @@ integrates with its implementation language.
 
 ```sh
 npm install
-npm run build
+gulp build
 ```
 
 This will build the source code into `build/`.

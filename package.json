@@ -1,24 +1,11 @@
 {
   "name": "signtext",
-  "version": "1.0.6",
+  "version": "1.1.0",
   "description": "Simple data manipulation language",
-  "license": "MIT",
-  "author": {
-    "name": "George Thomas",
-    "url": "https://mgthomas99.github.io"
-  },
-  "keywords": [
-    "language",
-    "string"
-  ],
   "main": "build/index.js",
+  "types": "build/index.d.ts",
   "scripts": {
-    "build": "gulp \"build\"",
     "clean": "gulp \"clean\"",
-    "dist": "gulp \"dist\"",
-    "lint:javascript": "gulp \"lint:javascript\"",
-    "lint:typescript": "gulp \"lint:typescript\"",
-    "lint": "gulp \"lint\"",
     "start": "node \"build/index.js\"",
     "test": "mocha \"test/**/*.spec.js\""
   },
@@ -31,7 +18,6 @@
     "chai": "^4.2.0",
     "del": "^3.0.0",
     "eslint": "^5.6.0",
-    "gulp": "^3.9.1",
     "gulp-eslint": "^5.0.0",
     "gulp-nearley": "^1.0.0",
     "gulp-tslint": "^8.1.3",
@@ -48,5 +34,15 @@
     "moo": "^0.4.3",
     "nearley": "2.11.1",
     "yargs": "^12.0.2"
-  }
+  },
+  "author": {
+    "name": "George Thomas",
+    "url": "https://mgthomas99.github.io"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SignText/node-signtext"
+  },
+  "homepage": "https://signtext.github.io",
+  "license": "MIT"
 }
