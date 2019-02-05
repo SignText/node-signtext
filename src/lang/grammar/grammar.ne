@@ -28,18 +28,20 @@
 @include "./src/lang/grammar/literal.ne"
 @include "./src/lang/grammar/namespace.ne"
 
-Chunk -> Expression
+Chunk ->
+  Expression
     {% function (data) {
       return data[0];
     } %}
 
 Expression ->
-    _ (FunctionCall | Literal | VariableCall) _
+  _ (FunctionCall | Literal | VariableCall) _
     {% function (data) {
       return data[1][0];
     } %}
 
-Identifier -> %identifier (%period %identifier):*
+Identifier ->
+  %identifier (%period %identifier):*
     {% function (data) {
       const derefs = (data[1] || []).map(x => x[1].value);
       return [data[0].value, ...derefs].join(".");

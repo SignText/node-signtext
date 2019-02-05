@@ -1,6 +1,7 @@
 @lexer lexer
 
-FunctionCall -> VariableCall _ ParameterList
+FunctionCall ->
+  VariableCall _ ParameterList
     {% function (data) {
       return ({
         type: "Call",
@@ -11,13 +12,15 @@ FunctionCall -> VariableCall _ ParameterList
       });
     } %}
 
-ParameterList -> %lparen Parameter (%comma Parameter):* %rparen
+ParameterList ->
+  %lparen Parameter (%comma Parameter):* %rparen
     {% function (data) {
       const ext_params = data[2].map(x => x[1]);
       return [data[1], ...ext_params];
     } %}
 
-Parameter -> (Expression)
+Parameter ->
+  (Expression)
     {% function (data) {
       return data[0][0];
     } %}
