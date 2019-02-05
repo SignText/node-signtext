@@ -8,16 +8,19 @@ export class Context {
     this.ns = ns || { };
   }
 
-  public import(ns: Context | Namespace) {
+  public import(ns: Context | Namespace)
+  : (this) {
     if (ns instanceof Context) {
       return this.import(ns.ns);
     }
     for (const key of Object.keys(ns)) {
       this.set(key, ns[key]);
     }
+    return this;
   }
 
-  public set(identifier: string, value: NamespaceValue) : void {
+  public set(identifier: string, value: NamespaceValue)
+  : (void) {
     this.ns[identifier] = value;
   }
 

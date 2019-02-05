@@ -1,4 +1,3 @@
-import { Mutex } from "async-mutex";
 import * as nearley from "nearley";
 
 import { NamespaceValue } from "./lang/namespace";
@@ -6,16 +5,15 @@ import { Context } from "./lang/context";
 import { Primitive } from "./lang/primitive";
 import { TokenType } from "./lang/token/token-type";
 
-const grammar = nearley.Grammar.fromCompiled(require("./lang/grammar/grammar"));
+const grammar = nearley.Grammar.fromCompiled(
+    require("./lang/grammar/grammar"));
 
 export class Runtime {
 
   private readonly parser: nearley.Parser;
-  private readonly mutex: Mutex;
 
   public constructor() {
     this.parser = new nearley.Parser(grammar);
-    this.mutex = new Mutex();
   }
 
   /**
@@ -31,16 +29,20 @@ export class Runtime {
    */
   public async eval(x: string, ctx: Context)
   : (Promise<string>) {
-    const release = await this.mutex.acquire();
+    const parsed = await this.parse(x);
+    const res = await this._eval(parsed, ctx);
+    return String(res);
+  }
+
+  public async parse(x: string)
+  : (Promise<any>) {
     const state = this.parser.save();
     this.parser.feed(x);
     this.parser.finish();
 
     const result = this.parser.results[0];
     this.parser.restore(state);
-    release();
-    const res = await this._eval(result, ctx);
-    return String(res);
+    return result;
   }
 
   private async _eval(x: Primitive | TokenType, ctx: Context)
