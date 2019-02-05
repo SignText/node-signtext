@@ -45,3 +45,5 @@ gulp.task("lint:typescript", function () {
 
 gulp.task("lint", ["lint:javascript", "lint:typescript"]);
 gulp.task("default", ["build"]);
+
+gulp.task("npm:prepack", gulp.series("clean", "build"));

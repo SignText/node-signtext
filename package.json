@@ -5,7 +5,7 @@
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "scripts": {
-    "clean": "gulp \"clean\"",
+    "prepack": "gulp \"npm:prepack\"",
     "start": "node \"build/index.js\"",
     "test": "mocha \"test/**/*.spec.js\""
   },
@@ -18,6 +18,7 @@
     "chai": "^4.2.0",
     "del": "^3.0.0",
     "eslint": "^5.6.0",
+    "gulp": "^4.0.0",
     "gulp-eslint": "^5.0.0",
     "gulp-nearley": "^1.0.0",
     "gulp-tslint": "^8.1.3",
