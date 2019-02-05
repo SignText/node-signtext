@@ -19,7 +19,7 @@ gulp.task("build:script", function () {
       .pipe(gulp.dest("build/"));
 })
 
-gulp.task("build", ["build:grammar", "build:script"]);
+gulp.task("build", gulp.parallel("build:grammar", "build:script"));
 
 gulp.task("clean", function () {
   return del([
@@ -43,7 +43,7 @@ gulp.task("lint:typescript", function () {
       }));
 });
 
-gulp.task("lint", ["lint:javascript", "lint:typescript"]);
-gulp.task("default", ["build"]);
+gulp.task("lint", gulp.parallel("lint:javascript", "lint:typescript"));
+gulp.task("default", gulp.parallel("build"));
 
 gulp.task("npm:prepack", gulp.series("clean", "build"));
