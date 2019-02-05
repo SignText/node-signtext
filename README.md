@@ -9,8 +9,8 @@
 [![NPM][NPM-Package-Version-Shield-URL]][NPM-Package-URL]
 [![GitHub][License-Shield-URL]][GitHub-Repository-URL]
 
-SignText is a powerful & simple markup language for string manipulation, that
-integrates with Javascript.
+SignText is a powerful & simple markup language for data manipulation, that
+integrates with its implementation language.
 
 ## Build & Test
 

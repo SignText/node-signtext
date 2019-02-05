@@ -1,7 +1,7 @@
 {
   "name": "signtext",
   "version": "1.0.6",
-  "description": "String manipulation language",
+  "description": "Simple data manipulation language",
   "license": "MIT",
   "author": {
     "name": "George Thomas",
@@ -44,7 +44,6 @@
     "vinyl-buffer": "^1.0.1"
   },
   "dependencies": {
-    "async-mutex": "^0.1.3",
     "chalk": "^2.4.1",
     "moo": "^0.4.3",
     "nearley": "2.11.1",
